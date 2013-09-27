@@ -16,7 +16,22 @@
 		43286F5417F51C5A003B4259 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5317F51C5A003B4259 /* Default.png */; };
 		43286F5617F51C5A003B4259 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5517F51C5A003B4259 /* Default@2x.png */; };
 		43286F5817F51C5A003B4259 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5717F51C5A003B4259 /* Default-568h@2x.png */; };
+		43286F5F17F51E97003B4259 /* helloworld.scm in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5E17F51E97003B4259 /* helloworld.scm */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		43286F6017F51EA7003B4259 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.scm";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(INPUT_FILE_BASE).c",
+			);
+			script = "/usr/bin/gsc -c -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		43286F3E17F51C5A003B4259 /* HelloGambit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloGambit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +47,7 @@
 		43286F5317F51C5A003B4259 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		43286F5517F51C5A003B4259 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		43286F5717F51C5A003B4259 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		43286F5E17F51E97003B4259 /* helloworld.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = helloworld.scm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,7 @@
 		43286F4717F51C5A003B4259 /* HelloGambit */ = {
 			isa = PBXGroup;
 			children = (
+				43286F5E17F51E97003B4259 /* helloworld.scm */,
 				43286F5017F51C5A003B4259 /* AppDelegate.h */,
 				43286F5117F51C5A003B4259 /* AppDelegate.m */,
 				43286F4817F51C5A003B4259 /* Supporting Files */,
@@ -111,6 +128,7 @@
 				43286F3C17F51C5A003B4259 /* Resources */,
 			);
 			buildRules = (
+				43286F6017F51EA7003B4259 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -154,6 +172,7 @@
 				43286F5417F51C5A003B4259 /* Default.png in Resources */,
 				43286F5617F51C5A003B4259 /* Default@2x.png in Resources */,
 				43286F5817F51C5A003B4259 /* Default-568h@2x.png in Resources */,
+				43286F5F17F51E97003B4259 /* helloworld.scm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
