@@ -17,6 +17,7 @@
 		43286F5617F51C5A003B4259 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5517F51C5A003B4259 /* Default@2x.png */; };
 		43286F5817F51C5A003B4259 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5717F51C5A003B4259 /* Default-568h@2x.png */; };
 		43286F5F17F51E97003B4259 /* helloworld.scm in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5E17F51E97003B4259 /* helloworld.scm */; };
+		4379AD9017F551F9005D6F2A /* helloworld.scm in Sources */ = {isa = PBXBuildFile; fileRef = 43286F5E17F51E97003B4259 /* helloworld.scm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -28,8 +29,9 @@
 			isEditable = 1;
 			outputFiles = (
 				"$(INPUT_FILE_BASE).c",
+				"$(INPUT_FILE_BASE)_.c",
 			);
-			script = "/usr/bin/gsc -c -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"";
+			script = "/usr/bin/gsc -c -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"\n/usr/bin/gsc -link -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"";
 		};
 /* End PBXBuildRule section */
 
@@ -48,6 +50,7 @@
 		43286F5517F51C5A003B4259 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		43286F5717F51C5A003B4259 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		43286F5E17F51E97003B4259 /* helloworld.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = helloworld.scm; sourceTree = "<group>"; };
+		4379AD9117F5520D005D6F2A /* gambit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gambit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 		43286F4717F51C5A003B4259 /* HelloGambit */ = {
 			isa = PBXGroup;
 			children = (
+				4379AD9117F5520D005D6F2A /* gambit.h */,
 				43286F5E17F51E97003B4259 /* helloworld.scm */,
 				43286F5017F51C5A003B4259 /* AppDelegate.h */,
 				43286F5117F51C5A003B4259 /* AppDelegate.m */,
@@ -185,6 +189,7 @@
 			files = (
 				43286F4E17F51C5A003B4259 /* main.m in Sources */,
 				43286F5217F51C5A003B4259 /* AppDelegate.m in Sources */,
+				4379AD9017F551F9005D6F2A /* helloworld.scm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +269,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
+				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
+				OTHER_LDFLAGS = "-lgambc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,6 +282,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
+				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
+				OTHER_LDFLAGS = "-lgambc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -299,6 +308,7 @@
 				43286F5D17F51C5A003B4259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
