@@ -8,6 +8,66 @@
 
 #import "AppDelegate.h"
 
+#define ___VERSION 407000
+#include "gambit.h"
+
+/*
+ * the link file "prog_.c" is generated.  It contains various tables
+ * (symbols, global variables, list of modules, etc) describing the
+ * set of Scheme modules that are linked.  The link file is needed to
+ * initialize the Scheme runtime system.
+ *
+ * The symbol SCHEME_LINKER must be defined as the name of the Scheme
+ * link file stripped of the extension, prefixed with "____20_" and
+ * the character "_" transformed to "__".  This is the name of the
+ * function in the link file that initializes the Scheme modules.
+ */
+//#define SCHEME_LINKER ____20_prog__
+#define SCHEME_LINKER ____20_helloworld__
+
+___BEGIN_C_LINKAGE
+extern ___mod_or_lnk SCHEME_LINKER(___global_state_struct*);
+___END_C_LINKAGE
+
+
+/* Forward declare the function from test-gambit.scm */
+void test_gambit(char* str);
+
+
+static void runGambit()
+{
+    fprintf(stdout, "Starting test ...\n");
+    
+    /*
+     * Setup the Scheme library by calling "___setup" with appropriate
+     * parameters.  The call to "___setup_params_reset" sets all
+     * parameters to their default setting.  The call to "___setup" also
+     * runs the Scheme code at toplevel.  After the call to "___setup"
+     * and before the call to "___cleanup" it is possible to call Scheme
+     * functions from C if required.
+     */
+    ___setup_params_struct setup_params;
+    
+    ___setup_params_reset(&setup_params);
+    
+    setup_params.version = ___VERSION;
+    setup_params.linker  = SCHEME_LINKER;
+    
+    ___setup(&setup_params);
+    
+    
+    /* Now call our function from test_gambit.scm */
+    test_gambit("Wow, this actually worked!\n");
+    
+    
+    /*
+     * Cleanup the Scheme runtime.
+     */
+    fprintf(stdout, "\nEnding ...\n");
+    
+    ___cleanup();
+}
+
 @implementation AppDelegate
 
 - (void)dealloc
@@ -22,6 +82,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    runGambit();
+    
+    
     return YES;
 }
 

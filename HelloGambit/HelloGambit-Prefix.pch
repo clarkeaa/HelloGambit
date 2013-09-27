@@ -12,3 +12,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#include <sys/types.h>
+#include <errno.h>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/fcntl.h>
+#include <sys/wait.h>
