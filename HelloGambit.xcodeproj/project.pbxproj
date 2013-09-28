@@ -16,7 +16,6 @@
 		43286F5417F51C5A003B4259 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5317F51C5A003B4259 /* Default.png */; };
 		43286F5617F51C5A003B4259 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5517F51C5A003B4259 /* Default@2x.png */; };
 		43286F5817F51C5A003B4259 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5717F51C5A003B4259 /* Default-568h@2x.png */; };
-		43286F5F17F51E97003B4259 /* helloworld.scm in Resources */ = {isa = PBXBuildFile; fileRef = 43286F5E17F51E97003B4259 /* helloworld.scm */; };
 		4379AD9017F551F9005D6F2A /* helloworld.scm in Sources */ = {isa = PBXBuildFile; fileRef = 43286F5E17F51E97003B4259 /* helloworld.scm */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +30,7 @@
 				"$(INPUT_FILE_BASE).c",
 				"$(INPUT_FILE_BASE)_.c",
 			);
-			script = "/usr/bin/gsc -c -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"\n/usr/bin/gsc -link -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"";
+			script = "/usr/bin/gsc -cc-options \"-D___LIBRARY\"  -c -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"\n/usr/bin/gsc -cc-options \"-D___LIBRARY\"  -link -o \"$DERIVED_SOURCES_DIR\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"";
 		};
 /* End PBXBuildRule section */
 
@@ -176,7 +175,6 @@
 				43286F5417F51C5A003B4259 /* Default.png in Resources */,
 				43286F5617F51C5A003B4259 /* Default@2x.png in Resources */,
 				43286F5817F51C5A003B4259 /* Default-568h@2x.png in Resources */,
-				43286F5F17F51E97003B4259 /* helloworld.scm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +266,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "___LIBRARY";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
 				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
 				OTHER_LDFLAGS = "-lgambc";
@@ -281,6 +280,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "___LIBRARY";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
 				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
 				OTHER_LDFLAGS = "-lgambc";
