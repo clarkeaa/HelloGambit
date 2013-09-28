@@ -268,7 +268,7 @@
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "___LIBRARY";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
-				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
+				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib;
 				OTHER_LDFLAGS = "-lgambc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -282,7 +282,7 @@
 				GCC_PREFIX_HEADER = "HelloGambit/HelloGambit-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "___LIBRARY";
 				INFOPLIST_FILE = "HelloGambit/HelloGambit-Info.plist";
-				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib/i386;
+				LIBRARY_SEARCH_PATHS = ./HelloGambit/lib;
 				OTHER_LDFLAGS = "-lgambc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
