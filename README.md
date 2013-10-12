@@ -10,6 +10,7 @@ Assuming you have all the requirements met, just hit the compile&run button, the
 ## notes
 - uses xcode's build rules to recompile the scm file on run
 - includes binary build of libgambc built against the iOS 6.1 SDK which is under lgpl
+- I tried this with a version of Xcode 5, that version of clang crashes when trying to compile the generated c files
 
 ## references
 - http://gambitscheme.org/wiki/index.php/Main_Page gambit-c
